@@ -56,6 +56,20 @@
             </div>
 
         </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-primary" ng-disabled="theForm.$invalid" ng-click="todo.item.update()">
+                    <span class="glyphicon glyphicon-save"></span>
+                    Save
+                </button>
+                <button class="btn btn-link" ng-click="todo.item.fetch()">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                    Revert
+                </button>
+            </div>
+        </div>
+
     </form>
 
     <hr/>

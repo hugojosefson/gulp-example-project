@@ -20,6 +20,23 @@ angular.module('demoApp').factory('createResource', function ($rootScope, $http,
                 parent: this,
                 followsRel: rel
             });
+        },
+        update: function () {
+            var self = this;
+
+            return $http({
+                method: this.response._links.update.method,
+                url: this.response._links.update.href,
+                data: _.pick(this.response, Object.keys(this.response._links.update.schema.properties))
+            })
+                .success(function (response) {
+                    self.error = null;
+                    self.response = response;
+                })
+                .error(function (error) {
+                    self.error = error;
+                    self.response = null;
+                });
         }
     };
 
