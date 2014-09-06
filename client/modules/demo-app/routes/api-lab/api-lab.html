@@ -18,6 +18,24 @@
         <pre><code>{{ api.entryPointResource.error | json }}</code></pre>
     </div>
 
+
+    <h2>todosResource</h2>
+
+    <div ng-show="api.todosResource.url" class="alert alert-success">
+        <strong>.url</strong>
+        <pre><code>{{ api.todosResource.url | json }}</code></pre>
+    </div>
+
+    <div ng-show="api.todosResource.response" class="alert alert-success">
+        <strong>.response</strong>
+        <pre><code>{{ api.todosResource.response | json }}</code></pre>
+    </div>
+
+    <div ng-show="api.todosResource.error" class="alert alert-danger">
+        <strong>.error</strong>
+        <pre><code>{{ api.todosResource.error | json }}</code></pre>
+    </div>
+
     <hr/>
     <a href="#/">Back</a>
 </div>
