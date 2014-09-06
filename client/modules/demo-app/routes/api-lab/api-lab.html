@@ -1,6 +1,22 @@
 <div ng-controller="ApiLabController as api">
     <h1>API Lab</h1>
 
+    <h2>entryPointResource</h2>
+
+    <div ng-show="api.entryPointResource.url" class="alert alert-success">
+        <strong>.url</strong>
+        <pre><code>{{ api.entryPointResource.url | json }}</code></pre>
+    </div>
+
+    <div ng-show="api.entryPointResource.response" class="alert alert-success">
+        <strong>.response</strong>
+        <pre><code>{{ api.entryPointResource.response | json }}</code></pre>
+    </div>
+
+    <div ng-show="api.entryPointResource.error" class="alert alert-danger">
+        <strong>.error</strong>
+        <pre><code>{{ api.entryPointResource.error | json }}</code></pre>
+    </div>
 
     <hr/>
     <a href="#/">Back</a>
