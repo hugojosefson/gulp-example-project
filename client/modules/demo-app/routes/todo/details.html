@@ -67,6 +67,11 @@
                     <span class="glyphicon glyphicon-refresh"></span>
                     Revert
                 </button>
+                <button class="btn btn-danger pull-right"
+                        ng-disabled="!todo.item.response._links.delete" ng-click="todo.delete(todo.item)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    Delete
+                </button>
             </div>
         </div>
 

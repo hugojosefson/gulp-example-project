@@ -1,4 +1,4 @@
-angular.module('demoApp').controller('TodoItemController', function (todosResource, $routeParams) {
+angular.module('demoApp').controller('TodoItemController', function (todosResource, $routeParams, $location) {
     'use strict';
 
     var self = this;
@@ -14,6 +14,12 @@ angular.module('demoApp').controller('TodoItemController', function (todosResour
             self.item = null;
         }
     });
+
+    this.delete = function (item) {
+        item.delete().then(function () {
+            $location.path('/todo');
+        });
+    };
 
     this.isGreaterThan = function (a, b) {
         return a > b;

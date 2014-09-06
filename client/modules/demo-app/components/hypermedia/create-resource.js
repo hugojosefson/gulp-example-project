@@ -37,6 +37,27 @@ angular.module('demoApp').factory('createResource', function ($rootScope, $http,
                     self.error = error;
                     self.response = null;
                 });
+        },
+        delete: function () {
+            var self = this;
+
+            return $http({
+                method: this.response._links.delete.method,
+                url: this.response._links.delete.href
+            })
+                .success(function (response) {
+                    self.error = null;
+                    self.url = null;
+                    self.response = null;
+                    if (self.parent) {
+                        self.parent.fetch();
+                        self.parent = null;
+                    }
+                })
+                .error(function (error) {
+                    self.error = error;
+                    self.response = null;
+                });
         }
     };
 
