@@ -15,4 +15,8 @@ angular.module('demoApp').controller('TodoItemController', function (todosResour
         }
     });
 
+    this.isGreaterThan = function (a, b) {
+        return a > b;
+    };
+
 });
