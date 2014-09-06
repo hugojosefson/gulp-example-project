@@ -2,7 +2,7 @@
 
     <div ng-show="todo.item.url && !todo.item.response">Loading...</div>
 
-    <form ng-show="todo.item.response" class="form-horizontal" role="form">
+    <form ng-show="todo.item.response" class="form-horizontal" role="form" name="theForm" novalidate>
         <h1>{{ todo.item.response._links.update.schema.description }}</h1>
 
         <div

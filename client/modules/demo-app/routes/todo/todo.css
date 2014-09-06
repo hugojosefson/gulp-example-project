@@ -1,3 +1,11 @@
 .done {
     text-decoration: line-through;
 }
+
+input.ng-invalid.ng-dirty {
+    background-color: #FA787E;
+}
+
+input.ng-valid.ng-dirty {
+    background-color: #78FA89;
+}
