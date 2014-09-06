@@ -6,7 +6,7 @@
         <h1>{{ todo.item.response._links.update.schema.description }}</h1>
 
         <div
-            ng-repeat="(key, property) in todo.item.response._links.update.schema.properties"
+            ng-repeat="property in todo.item.response._links.update.schema.properties | toArray | orderBy:todo.sortKnownProperties"
             class="form-group">
 
             <div ng-switch="property.type">
@@ -14,22 +14,22 @@
                 <div ng-switch-when="boolean" class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" ng-model="todo.item.response[key]"> {{ property.title || key }}
+                            <input type="checkbox" ng-model="todo.item.response[property.key]"> {{ property.title || property.key }}
                         </label>
                     </div>
                 </div>
 
                 <div ng-switch-default>
 
-                    <label for="input_{{ key }}" class="col-sm-2 control-label">{{ property.title || key }}</label>
+                    <label for="input_{{ property.key }}" class="col-sm-2 control-label">{{ property.title || property.key }}</label>
 
                     <div class="col-sm-10">
 
                         <div ng-switch="todo.isGreaterThan(property.maxLength, 256)">
                             <textarea
                                 ng-switch-when="true"
-                                id="input_{{ key }}"
-                                ng-model="todo.item.response[key]"
+                                id="input_{{ property.key }}"
+                                ng-model="todo.item.response[property.key]"
                                 ng-class="{'done': todo.item.response.done}"
                                 class="form-control"
                                 ng-required="{{ property.required }}"
@@ -40,8 +40,8 @@
 
                             <input
                                 ng-switch-default
-                                id="input_{{ key }}"
-                                ng-model="todo.item.response[key]"
+                                id="input_{{ property.key }}"
+                                ng-model="todo.item.response[property.key]"
                                 type="text"
                                 ng-class="{'done': todo.item.response.done}"
                                 class="form-control"

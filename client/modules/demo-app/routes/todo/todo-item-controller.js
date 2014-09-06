@@ -19,4 +19,12 @@ angular.module('demoApp').controller('TodoItemController', function (todosResour
         return a > b;
     };
 
+    var knownPropertiesOrder = {
+        'title': 1,
+        'done': 999
+    };
+    this.sortKnownProperties = function (property) {
+        return knownPropertiesOrder[property.key] || 500;
+    };
+
 });
