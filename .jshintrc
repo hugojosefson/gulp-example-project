@@ -12,6 +12,7 @@
 
     "predef": [             // Custom globals.
         "angular",
+        "_",                // Underscore.js
         "describe",
         "it",
         "before",

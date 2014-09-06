@@ -21,6 +21,7 @@ module.exports = {
         client: {
             bowerJsFilesToInclude: [
                 bowerDirectory + '/jquery/dist/jquery' + (isProduction ? '.min.js' : '.js'),
+                bowerDirectory + '/underscore/underscore' + (isProduction ? '-min.js' : '.js'),
                 bowerDirectory + '/bootstrap/dist/js/bootstrap' + (isProduction ? '.min.js' : '.js'),
                 bowerDirectory + '/angular/angular' + (isProduction ? '.min.js' : '.js'),
                 bowerDirectory + '/angular-route/angular-route' + (isProduction ? '.min.js' : '.js')
