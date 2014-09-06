@@ -14,6 +14,9 @@ angular.module('demoApp').config(function ($routeProvider) {
         .when('/todo/:index', {
             templateUrl: 'modules/demo-app/routes/todo/details.html'
         })
+        .when('/api-lab', {
+            templateUrl: 'modules/demo-app/routes/api-lab/api-lab.html'
+        })
         .otherwise({
             template: '<h1>404 SPA route not found</h1>'
         });
