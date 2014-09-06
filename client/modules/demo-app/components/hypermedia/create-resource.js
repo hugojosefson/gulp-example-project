@@ -1,4 +1,4 @@
-angular.module('demoApp').factory('createResource', function ($rootScope, $http) {
+angular.module('demoApp').factory('createResource', function ($rootScope, $http, $parse) {
     'use strict';
 
     var defaultResource = {
@@ -41,6 +41,22 @@ angular.module('demoApp').factory('createResource', function ($rootScope, $http)
                 resource.url = newUrl;
             });
         }
+
+        resource.$watch('response._items', function (items) {
+            if (items) {
+                resource.items = Object.keys(items).map(function createItemResource(id) {
+                    var item = items[id];
+                    var url = $parse('_links.self.href')(item);
+                    return url && createResource({
+                        url: url,
+                        parent: resource
+                    });
+                });
+            } else {
+                resource.items = null;
+            }
+        });
+
         return resource;
     }
 
