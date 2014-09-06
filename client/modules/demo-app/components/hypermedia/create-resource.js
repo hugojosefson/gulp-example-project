@@ -21,6 +21,18 @@ angular.module('demoApp').factory('createResource', function ($rootScope, $http,
                 followsRel: rel
             });
         },
+        create: function (data) {
+            var self = this;
+
+            return $http({
+                method: this.response._links.create.method,
+                url: this.response._links.create.href,
+                data: _.pick(data, Object.keys(this.response._links.create.schema.properties))
+            })
+                .success(function () {
+                    self.fetch();
+                });
+        },
         update: function () {
             var self = this;
 

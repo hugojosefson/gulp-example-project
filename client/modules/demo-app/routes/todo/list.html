@@ -14,6 +14,95 @@
         </ul>
     </form>
 
+    <div ng-show="todo.todosResource.response._links.create">
+        <hr/>
+
+        <div class="panel panel-default">
+            <div class="panel-heading" ng-click="showNew = !showNew">
+                <h3 class="panel-title" ng-class="{'dropup': showNew}">
+                    New {{ todo.todosResource.response._links.create.schema.description }}
+                    <span class="caret"></span>
+                </h3>
+            </div>
+            <div class="panel-body" ng-show="showNew">
+                <form ng-show="todo.todosResource.response._links.create" class="form-horizontal" role="form"
+                      name="theForm" novalidate>
+                    <div
+                        ng-repeat="property in todo.todosResource.response._links.create.schema.properties | toArray | orderBy:todo.sortKnownProperties"
+                        class="form-group">
+
+                        <div ng-switch="property.type">
+
+                            <div ng-switch-when="boolean" class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="todo.newItem[property.key]">
+                                        {{ property.title || property.key }}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div ng-switch-default>
+
+                                <label for="input_{{ property.key }}" class="col-sm-2 control-label">{{ property.title
+                                    || property.key }}</label>
+
+                                <div class="col-sm-10">
+
+                                    <div ng-switch="todo.isGreaterThan(property.maxLength, 256)">
+                                        <textarea
+                                            ng-switch-when="true"
+                                            id="input_{{ property.key }}"
+                                            ng-model="todo.newItem[property.key]"
+                                            ng-class="{'done': todo.item.response.done}"
+                                            class="form-control"
+                                            ng-required="{{ property.required }}"
+                                            ng-minlength="{{ property.minLength }}"
+                                            ng-maxlength="{{ property.maxLength }}"
+                                            rows="10"
+                                            ></textarea>
+
+                                        <input
+                                            ng-switch-default
+                                            id="input_{{ property.key }}"
+                                            ng-model="todo.newItem[property.key]"
+                                            type="text"
+                                            ng-class="{'done': todo.item.response.done}"
+                                            class="form-control"
+                                            ng-required="{{ property.required }}"
+                                            ng-minlength="{{ property.minLength }}"
+                                            ng-maxlength="{{ property.maxLength }}"
+                                            />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button class="btn btn-primary"
+                                    ng-disabled="theForm.$invalid || theForm.$pristine"
+                                    ng-click="todo.create(todo.todosResource, todo.newItem)">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                Create
+                            </button>
+                            <button class="btn btn-link"
+                                    ng-disabled="theForm.$pristine" ng-click="todo.clear(todo.newItem)">
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                                Revert
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     <hr/>
     <a href="#/">Back</a>
 </div>
