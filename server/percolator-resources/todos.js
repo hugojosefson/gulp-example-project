@@ -25,6 +25,11 @@ var todoCrudCollection = createCRUDCollectionWithStorage(
                 done: {
                     title: 'Done',
                     type: 'boolean'
+                },
+                extraNote: {
+                    type: 'string',
+                    minLength: 20,
+                    maxLength: 256
                 }
             }
         }
