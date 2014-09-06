@@ -14,6 +14,12 @@ angular.module('demoApp').factory('createResource', function ($rootScope, $http)
                     self.error = error;
                     self.response = null;
                 });
+        },
+        follow: function follow(rel) {
+            return createResource({
+                parent: this,
+                followsRel: rel
+            });
         }
     };
 
@@ -30,6 +36,11 @@ angular.module('demoApp').factory('createResource', function ($rootScope, $http)
             }
         });
 
+        if (resource.parent && resource.followsRel) {
+            resource.parent.$watch('response._links.' + resource.followsRel + '.href', function (newUrl) {
+                resource.url = newUrl;
+            });
+        }
         return resource;
     }
 
