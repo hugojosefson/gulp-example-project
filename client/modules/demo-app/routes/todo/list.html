@@ -1,12 +1,14 @@
 <div ng-controller="TodoListController as todo">
     <h1>Todo</h1>
 
-    <form>
+    <div ng-hide="todo.todosResource.items">Loading...</div>
+
+    <form ng-show="todo.todosResource.items">
         <ul class="list-group">
-            <li class="list-group-item" ng-repeat="item in todo.items">
-                <input type="checkbox" ng-model="item.done"/>
-                <a href="#/todo/{{$index}}" ng-class="{'done': item.done}">
-                    {{ item.title }}
+            <li class="list-group-item" ng-repeat="item in todo.todosResource.items">
+                <input type="checkbox" ng-model="item.response.done"/>
+                <a href="#/todo/{{ item.url | encodeURIComponent | encodeURIComponent }}"
+                   ng-class="{'done': item.response.done}">{{ item.response.title }}
                 </a>
             </li>
         </ul>

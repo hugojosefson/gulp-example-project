@@ -1,30 +1,32 @@
 <div ng-controller="TodoItemController as todo">
     <h1>Todo item</h1>
 
-    <form role="form">
+    <div ng-show="todo.item.url && !todo.item.response">Loading...</div>
+
+    <form ng-show="todo.item.response" role="form">
         <div class="form-group">
             <label>
                 Title
                 <input
-                        ng-model="todo.item.title"
-                        ng-class="{'done': todo.item.done}"
-                        class="form-control"
-                        />
+                    ng-model="todo.item.response.title"
+                    ng-class="{'done': todo.item.response.done}"
+                    class="form-control"
+                    />
             </label>
         </div>
         <div class="form-group">
             <label>
                 Description
                 <textarea
-                        ng-model="todo.item.description"
-                        ng-class="{'done': todo.item.done}"
-                        class="form-control"
-                        ></textarea>
+                    ng-model="todo.item.response.description"
+                    ng-class="{'done': todo.item.response.done}"
+                    class="form-control"
+                    ></textarea>
             </label>
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox" ng-model="todo.item.done"/>
+                <input type="checkbox" ng-model="todo.item.response.done"/>
                 Done
             </label>
         </div>

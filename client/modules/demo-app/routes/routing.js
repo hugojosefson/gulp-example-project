@@ -11,7 +11,7 @@ angular.module('demoApp').config(function ($routeProvider) {
         .when('/todo', {
             templateUrl: 'modules/demo-app/routes/todo/list.html'
         })
-        .when('/todo/:index', {
+        .when('/todo/:url', {
             templateUrl: 'modules/demo-app/routes/todo/details.html'
         })
         .when('/api-lab', {
