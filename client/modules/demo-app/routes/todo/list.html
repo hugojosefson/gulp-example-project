@@ -6,7 +6,7 @@
     <form ng-show="todo.todosResource.items">
         <ul class="list-group">
             <li class="list-group-item" ng-repeat="item in todo.todosResource.items">
-                <input type="checkbox" ng-model="item.response.done"/>
+                <input type="checkbox" ng-model="item.response.done" ng-change="item.update()"/>
                 <a href="#/todo/{{ item.url | encodeURIComponent | encodeURIComponent }}"
                    ng-class="{'done': item.response.done}">{{ item.response.title }}
                 </a>
