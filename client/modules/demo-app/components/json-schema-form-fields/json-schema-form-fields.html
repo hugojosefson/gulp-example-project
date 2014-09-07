@@ -1,0 +1,53 @@
+<div
+    ng-repeat="property in schema.properties | toArray | orderBy:sortKnownProperties"
+    class="form-group">
+
+    <div ng-switch="property.type">
+
+        <div ng-switch-when="boolean" class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="item[property.key]">
+                    {{ property.title || property.key }}
+                </label>
+            </div>
+        </div>
+
+        <div ng-switch-default>
+
+            <label for="input_{{ property.key }}" class="col-sm-2 control-label">{{ property.title || property.key
+                }}</label>
+
+            <div class="col-sm-10">
+
+                <div ng-switch="isGreaterThan(property.maxLength, 256)">
+                    <textarea
+                        ng-switch-when="true"
+                        id="input_{{ property.key }}"
+                        ng-model="item[property.key]"
+                        ng-class="{'done': item.done}"
+                        class="form-control"
+                        ng-required="{{ property.required }}"
+                        ng-minlength="{{ property.minLength }}"
+                        ng-maxlength="{{ property.maxLength }}"
+                        rows="10"
+                        ></textarea>
+
+                    <input
+                        ng-switch-default
+                        id="input_{{ property.key }}"
+                        ng-model="item[property.key]"
+                        type="text"
+                        ng-class="{'done': item.done}"
+                        class="form-control"
+                        ng-required="{{ property.required }}"
+                        ng-minlength="{{ property.minLength }}"
+                        ng-maxlength="{{ property.maxLength }}"
+                        />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

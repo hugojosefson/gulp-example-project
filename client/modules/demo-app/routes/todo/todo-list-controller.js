@@ -3,25 +3,14 @@ angular.module('demoApp').controller('TodoListController', function (todosResour
 
     var self = this;
     this.todosResource = todosResource;
+    this.newItem = {};
 
     this.create = function (listResource, item) {
         listResource.create(item).then(function () {
-            self.newItem = null;
+            self.clear(item);
         });
     };
 
     this.clear = deleteAllProperties;
-
-    this.isGreaterThan = function (a, b) {
-        return a > b;
-    };
-
-    var knownPropertiesOrder = {
-        'title': 1,
-        'done': 999
-    };
-    this.sortKnownProperties = function (property) {
-        return knownPropertiesOrder[property.key] || 500;
-    };
 
 });
