@@ -23,7 +23,8 @@ module.exports = {
                 bowerDirectory + '/jquery/dist/jquery' + (isProduction ? '.min.js' : '.js'),
                 bowerDirectory + '/bootstrap/dist/js/bootstrap' + (isProduction ? '.min.js' : '.js'),
                 bowerDirectory + '/angular/angular' + (isProduction ? '.min.js' : '.js'),
-                bowerDirectory + '/angular-route/angular-route' + (isProduction ? '.min.js' : '.js')
+                bowerDirectory + '/angular-route/angular-route' + (isProduction ? '.min.js' : '.js'),
+                bowerDirectory + '/angular-resource/angular-resource' + (isProduction ? '.min.js' : '.js')
             ],
             bowerCssFilesToInclude: [
                 bowerDirectory + '/bootstrap/dist/css/bootstrap' + (isProduction ? '.min.css' : '.css'),
