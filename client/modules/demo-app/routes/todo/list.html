@@ -3,9 +3,9 @@
 
     <form>
         <ul class="list-group">
-            <li class="list-group-item" ng-repeat="item in todo.items">
+            <li class="list-group-item" ng-repeat="(id, item) in todo.items._items">
                 <input type="checkbox" ng-model="item.done"/>
-                <a href="#/todo/{{$index}}" ng-class="{'done': item.done}">
+                <a href="#/todo/{{id}}" ng-class="{'done': item.done}">
                     {{ item.title }}
                 </a>
             </li>

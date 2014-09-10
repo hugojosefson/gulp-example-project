@@ -1,5 +1,5 @@
-angular.module('demoApp').controller('TodoItemController', function (todoItems, $routeParams) {
+angular.module('demoApp').controller('TodoItemController', function (Todo, $routeParams) {
     'use strict';
 
-    this.item = todoItems[$routeParams.index];
+    this.item = Todo.get({id: $routeParams.index});
 });

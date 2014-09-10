@@ -1,5 +1,5 @@
-angular.module('demoApp').controller('TodoListController', function (todoItems) {
+angular.module('demoApp').controller('TodoListController', function (Todo) {
     'use strict';
 
-    this.items = todoItems;
+    this.items = Todo.get();
 });

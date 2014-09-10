@@ -1,5 +1,6 @@
-angular.module('demoApp').value('todoItems', [
-    {title: 'Set up git repo', done: true},
-    {title: 'Write tests'},
-    {title: 'Buy soy milk'}
-]);
+angular.module('demoApp').factory('Todo', function ($resource) {
+    'use strict';
+
+    var Todo = $resource('/api/todos/:id', {id: '@id'});
+    return Todo;
+});
