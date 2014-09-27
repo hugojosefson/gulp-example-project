@@ -7,13 +7,17 @@ var browserSync = require('browser-sync');
 
 var paths = require('../paths');
 
+var port = Number(process.env.PORT) || 3000;
+var internalPort = process.env.INTERNAL_PORT || (port + 1);
+
 gulp.task('server:start', ['dist'], function (cb) {
     server.listen({
         cwd: 'dist/',
         path: 'server.js',
         env: {
             NODE_ENV: 'development',
-            PORT: 3001
+            PORT: internalPort,
+            BEHIND_PROXY_URL: 'http://localhost' + (port === 80 ? '' : ':' + port) + '/'
         },
         successMessage: (/^Serving /)
     }, cb);
@@ -31,8 +35,8 @@ gulp.task('server:restart:browsersync', ['server:restart'], function (cb) {
 gulp.task('browser-sync', ['server:start'], function () {
     browserSync({
         open: false,
-        proxy: 'localhost:3001',
-        port: process.env.PORT || 3000
+        proxy: 'localhost:' + internalPort,
+        port: port
     });
 });
 
