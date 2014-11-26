@@ -1,6 +1,7 @@
-# gulp-example-project -> base
+# gulp-example-project -> browserify
 
-Example implementation of a project structure using [gulp.js](http://gulpjs.com/) for the build.
+Example implementation of a project structure with all JavaScript in CommonJS modules, using
+[Browserify](http://browserify.org/) and [gulp.js](http://gulpjs.com/) for the build.
 
 ## Commands
 

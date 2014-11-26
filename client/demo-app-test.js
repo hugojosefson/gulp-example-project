@@ -14,8 +14,8 @@ describe('meta', function () {
 
 describe('demo-app', function () {
     'use strict';
-    it('should NOT have require', function () {
-        expect(typeof require).to.not.equal('function');
+    it('should have require', function () {
+        expect(typeof require).to.equal('function');
     });
     it('should NOT have angular', function () {
         expect(typeof angular).to.equal('undefined');

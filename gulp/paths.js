@@ -11,10 +11,7 @@ module.exports = {
             '!' + serverTests
         ],
         client: {
-            js: [
-                './client/**/*.js',
-                '!./client/**/*-test.js'
-            ],
+            indexJs: './client/index.js',
             css: './client/**/*.css',
             static: [
                 './client/**',

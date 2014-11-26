@@ -4,12 +4,16 @@
 module.exports = function (config) {
     config.set({
         basePath: '',
-        frameworks: ['mocha', 'chai'],
+        frameworks: ['browserify', 'mocha', 'chai'],
         files: [
             'dist/client/bundle.js',
             'client/**/*-test.js'
         ],
         exclude: [],
+
+        preprocessors: {
+            'client/**/*-test.js': [ 'browserify' ]
+        },
 
         reporters: ['mocha'],
 
