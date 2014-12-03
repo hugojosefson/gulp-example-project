@@ -11,11 +11,11 @@ module.exports = {
             '!' + serverTests
         ],
         client: {
+            html: './client/**/*.html',
             js: [
                 './client/**/*.js',
                 '!./client/**/*-test.js'
             ],
-            css: './client/**/*.css',
             static: [
                 './client/**',
                 '!./client/**/*.js',

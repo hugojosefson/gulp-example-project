@@ -6,7 +6,7 @@ module.exports = function (config) {
         basePath: '',
         frameworks: ['mocha', 'chai'],
         files: [
-            'dist/client/bundle.js',
+            'dist/client/assets/bundle.js',
             'client/**/*-test.js'
         ],
         exclude: [],

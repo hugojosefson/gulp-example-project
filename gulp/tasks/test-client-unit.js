@@ -6,7 +6,7 @@ var karma = require('karma').server;
 
 var paths = require('../paths');
 
-gulp.task('test-client-unit', ['client-js-bundle'], function (done) {
+gulp.task('test-client-unit', ['client-usemin'], function (done) {
     karma.start({
         configFile: paths.test.client.karmaConf,
         singleRun: true

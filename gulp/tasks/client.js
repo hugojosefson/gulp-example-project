@@ -7,7 +7,6 @@ var gulp = require('gulp');
  * Builds the client.
  */
 gulp.task('client', [
-    'client-js-bundle',
-    'client-css-bundle',
+    'client-usemin',
     'client-static'
 ]);
