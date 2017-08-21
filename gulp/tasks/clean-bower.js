@@ -9,8 +9,8 @@ var paths = require('../paths');
 /**
  * Cleans out all downloaded bower files.
  */
-gulp.task('clean-bower', function (cb) {
-    del([
+gulp.task('clean-bower', function () {
+    return del([
         paths.clean.bower
-    ], cb);
+    ]);
 });

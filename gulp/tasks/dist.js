@@ -2,7 +2,7 @@
 'use strict';
 
 var gulp = require('gulp');
-var runSequence = require('run-sequence').use(gulp);
+var runSequence = require('gulp-sequence');
 
 /**
  * Builds everything in the /dist directory.

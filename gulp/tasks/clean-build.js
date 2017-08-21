@@ -9,8 +9,8 @@ var paths = require('../paths');
 /**
  * Cleans out all built files.
  */
-gulp.task('clean-build', function (cb) {
-    del([
+gulp.task('clean-build', function () {
+    return del([
         paths.clean.build
-    ], cb);
+    ]);
 });
